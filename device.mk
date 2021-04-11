@@ -207,6 +207,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libdrm.vendor
 
+# DT2W
+PRODUCT_PACKAGES += \
+    XiaomiDt2w
+
 # DumpState
 PRODUCT_PACKAGES += \
     android.hardware.dumpstate-V1-ndk.vendor
