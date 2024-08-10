@@ -103,21 +103,21 @@ BOARD_BOOTCONFIG := \
     androidboot.hypervisor.protected_vm.supported=false
 
 # Kernel (prebuilt)
-PREBUILT_PATH := device/xiaomi/peridot-prebuilt
+KERNEL_PATH := $(DEVICE_PATH)-kernel
 TARGET_NO_KERNEL_OVERRIDE := true
-TARGET_KERNEL_SOURCE := $(PREBUILT_PATH)/kernel-headers
-BOARD_PREBUILT_DTBIMAGE_DIR := $(PREBUILT_PATH)/images/dtbs/
-BOARD_PREBUILT_DTBOIMAGE := $(PREBUILT_PATH)/images/dtbo.img
+TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/images/dtbs/
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/images/dtbo.img
 PRODUCT_COPY_FILES += \
-	$(PREBUILT_PATH)/images/kernel:kernel
+	$(KERNEL_PATH)/images/kernel:kernel
 
 # Kernel modules
-DLKM_MODULES_PATH := $(PREBUILT_PATH)/modules/vendor_dlkm
-RAMDISK_MODULES_PATH := $(PREBUILT_PATH)/modules/vendor_boot
-SYSTEM_DLKM_MODULES_PATH := $(PREBUILT_PATH)/modules/system_dlkm/6.1.57-android14-11-g792270e27ab1-ab11683491
+DLKM_MODULES_PATH := $(KERNEL_PATH)/modules/vendor_dlkm
+RAMDISK_MODULES_PATH := $(KERNEL_PATH)/modules/vendor_boot
+SYSTEM_DLKM_MODULES_PATH := $(KERNEL_PATH)/modules/system_dlkm/6.1.57-android14-11-g83e3d64b2402-ab11577925
 
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(SYSTEM_DLKM_MODULES_PATH)/,$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules/6.1.57-android14-11-g792270e27ab1-ab11683491/)
+    $(call find-copy-subdir-files,*,$(SYSTEM_DLKM_MODULES_PATH)/,$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules/6.1.57-android14-11-g83e3d64b2402-ab11577925/)
 
 BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(DLKM_MODULES_PATH)/*.ko)
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(patsubst %,$(DLKM_MODULES_PATH)/%,$(shell cat $(DLKM_MODULES_PATH)/modules.load))
