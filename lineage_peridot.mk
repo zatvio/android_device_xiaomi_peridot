@@ -20,6 +20,16 @@ $(call inherit-product-if-exists, vendor/bcr/bcr.mk)
 # Inherit from the MiuiCamera setup
 $(call inherit-product-if-exists, device/xiaomi/peridot-miuicamera/device.mk)
 
+#TenX Flags
+TARGET_HAS_UDFPS := true
+TARGET_ENABLE_BLUR := true
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_PREBUILT_BCR := true
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
+TARGET_USE_CUSTOM_PACKAGE_INSTALLER := true
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+PRODUCT_NO_CAMERA := true
+
 PRODUCT_NAME := lineage_peridot
 PRODUCT_DEVICE := peridot
 PRODUCT_MANUFACTURER := Xiaomi
